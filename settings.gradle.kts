@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Berta"
 
 include(":app")
+include(":core")
