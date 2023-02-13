@@ -1,3 +1,4 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 pluginManagement {
     repositories {
         gradlePluginPortal()
