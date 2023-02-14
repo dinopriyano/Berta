@@ -54,6 +54,10 @@ dependencies {
   implementation(libs.ktor.client.negotiation)
   implementation(libs.ktor.serialization.json)
 
+  // Compose
+  implementation(libs.androidx.compose.paging)
+  implementation(libs.androidx.lifecycle.viewmodel.compose)
+
   // Kotlinx Serialization Json
   implementation(libs.kotlinx.serialization.json)
 
