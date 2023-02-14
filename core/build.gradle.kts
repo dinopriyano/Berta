@@ -46,6 +46,17 @@ dependencies {
 
   implementation(libs.kotlinx.coroutines.android)
 
+  // Ktor
+  implementation(libs.ktor.client.core)
+  implementation(libs.ktor.client.android)
+  implementation(libs.ktor.client.serialization)
+  implementation(libs.ktor.client.logging)
+  implementation(libs.ktor.client.negotiation)
+  implementation(libs.ktor.serialization.json)
+
+  // Kotlinx Serialization Json
+  implementation(libs.kotlinx.serialization.json)
+
   // Local tests: jUnit, coroutines, Android runner
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
