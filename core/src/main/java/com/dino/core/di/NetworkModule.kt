@@ -64,10 +64,7 @@ object NetworkModule {
           append(HttpHeaders.ContentType, "application/json")
           append(HttpHeaders.Authorization, "Bearer ${NdkUtils.getApiKey()}")
         }
-        url {
-          protocol = URLProtocol.HTTPS
-          host = NdkUtils.getBaseUrl()
-        }
+        url(NdkUtils.getBaseUrl())
       }
     }
   }

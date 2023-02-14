@@ -7,6 +7,7 @@ import com.dino.core.data.source.remote.dto.response.NewsResponse
 import com.dino.core.domain.model.News
 import com.dino.core.domain.repository.EverythingRepository
 import com.dino.core.domain.use_case.EverythingUseCase
+import com.dino.core.utils.Constants
 import de.yanneckreiss.kconmapper.generated.toNews
 import kotlinx.coroutines.flow.Flow
 
@@ -16,7 +17,7 @@ class EverythingUseCaseImpl constructor(
   override suspend fun getEverythingNews(keyword: String): Flow<PagingData<News>> {
     return object: RemotePagingMapResult<NewsResponse, News>() {
       override suspend fun fetchData(page: Int, size: Int): NewsResponse {
-        return repository.getEverythingNews(keyword)
+        return repository.getEverythingNews(keyword.ifEmpty { Constants.DEFAULT_KEYWORD })
       }
 
       override suspend fun mapData(data: NewsResponse): List<News> {
