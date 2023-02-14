@@ -1,9 +1,9 @@
 package com.dino.core.domain.use_case
 
-import com.dino.core.data.source.remote.dto.response.NewsResponse
-import com.dino.core.domain.model.Resource
+import androidx.paging.PagingData
+import com.dino.core.domain.model.News
 import kotlinx.coroutines.flow.Flow
 
 interface EverythingUseCase {
-  suspend fun getEverythingNews(keyword: String): Flow<Resource<NewsResponse>>
+  suspend fun getEverythingNews(keyword: String): Flow<PagingData<News>>
 }

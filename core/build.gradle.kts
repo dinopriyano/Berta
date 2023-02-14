@@ -2,6 +2,7 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.kapt)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.kotlin.plugin.serialization)
 }
 
@@ -36,6 +37,19 @@ android {
   kotlinOptions {
     jvmTarget = "11"
   }
+  externalNativeBuild {
+    cmake {
+      path = file("src/cpp/CMakeLists.txt")
+      version = "3.10.2"
+    }
+  }
+  libraryVariants.all {
+    kotlin.sourceSets {
+      getByName(name) {
+        kotlin.srcDir("build/generated/ksp/$name/kotlin")
+      }
+    }
+  }
 }
 
 dependencies {
@@ -60,6 +74,10 @@ dependencies {
 
   // Kotlinx Serialization Json
   implementation(libs.kotlinx.serialization.json)
+
+  // KCon Mapper
+  implementation(libs.kcon.mapper.anotation)
+  ksp(libs.kcon.mapper.ksp)
 
   // Local tests: jUnit, coroutines, Android runner
   testImplementation(libs.junit)

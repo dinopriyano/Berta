@@ -1,11 +1,15 @@
 package com.dino.core.data.source.remote.dto.response
 
+import com.dino.core.domain.model.News
+import com.github.yanneckreiss.kconmapper.annotations.KConMapper
+
 data class NewsResponse(
 	val totalResults: Int,
 	val articles: List<ArticlesItem>,
 	val status: String
 )
 
+@KConMapper(toClasses = [News::class])
 data class ArticlesItem(
 	val publishedAt: String,
 	val author: String,
