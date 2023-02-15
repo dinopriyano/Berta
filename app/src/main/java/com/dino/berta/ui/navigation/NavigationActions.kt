@@ -10,8 +10,11 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.dino.berta.R
 
-enum class BottomNavRoute(val routeName: String) {
-  HOME("home"), TRENDING("trending"), BOOKMARK("bookmark")
+enum class TopLevelNavRoute(val routeName: String) {
+  HOME("home"),
+  TRENDING("trending"),
+  BOOKMARK("bookmark"),
+  NEWS_DETAIL("news-detail")
 }
 
 data class BertaBottomNavDestination(
@@ -42,19 +45,19 @@ class BertaNavigationActions(private val navController: NavHostController) {
 
 val BOTTOM_NAV_DESTINATION = listOf(
   BertaBottomNavDestination(
-    route = BottomNavRoute.HOME.routeName,
+    route = TopLevelNavRoute.HOME.routeName,
     selectedIcon = Icons.Rounded.Home,
     unselectedIcon = Icons.Rounded.Home,
     iconTextId = R.string.tab_home
   ),
   BertaBottomNavDestination(
-    route = BottomNavRoute.TRENDING.routeName,
+    route = TopLevelNavRoute.TRENDING.routeName,
     selectedIcon = Icons.Rounded.LocalFireDepartment,
     unselectedIcon = Icons.Rounded.LocalFireDepartment,
     iconTextId = R.string.tab_trending
   ),
   BertaBottomNavDestination(
-    route = BottomNavRoute.BOOKMARK.routeName,
+    route = TopLevelNavRoute.BOOKMARK.routeName,
     selectedIcon = Icons.Rounded.Bookmark,
     unselectedIcon = Icons.Rounded.Bookmark,
     iconTextId = R.string.tab_bookmark

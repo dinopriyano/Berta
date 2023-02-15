@@ -3,38 +3,26 @@ package com.dino.berta.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import com.dino.berta.ui.screen.BertaApp
 import com.dino.berta.ui.theme.BertaTheme
+import com.google.accompanist.adaptive.calculateDisplayFeatures
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalMaterial3Api @ExperimentalMaterial3WindowSizeClassApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
       BertaTheme { // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-          Greeting("Android")
-        }
+        val windowSize = calculateWindowSizeClass(this)
+        val displayFeatures = calculateDisplayFeatures(this)
+
+        BertaApp(windowSize = windowSize, displayFeatures = displayFeatures)
       }
     }
-  }
-}
-
-@Composable fun Greeting(name: String, modifier: Modifier = Modifier) {
-  Text(
-    text = "Hello $name!", modifier = modifier
-  )
-}
-
-@Preview(showBackground = true) @Composable fun GreetingPreview() {
-  BertaTheme {
-    Greeting("Android")
   }
 }
